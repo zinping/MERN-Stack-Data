@@ -10,9 +10,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.4",
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.4",
-    "nodemon": "^2.0.12"
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "reactjs-popup": "^2.0.5",
+    "validator": "^13.6.0"
   }
 }
