@@ -57,6 +57,7 @@
 * [npm mongodb v3](https://www.npmjs.com/package/mongodb) official MongoDB driver for Node.js
 * [Express.js middleware v4](https://expressjs.com/)
 * [Node.js v14](https://nodejs.org/es/)
+* [JSON Web Tokens - JWT v8](https://www.npmjs.com/package/jsonwebtoken) to supply JSON Web Tokens
 
 ## :signal_strength: Frontend Technologies
 
@@ -110,12 +111,13 @@ mongoose.connection.on('error', err => {
 
 ## :clipboard: Status & To-Do List
 
-* Status: In work
+* Status: Backend in work
 * To-Do: Complete
 
 ## :clap: Inspiration
 
 * [React documentation](https://reactjs.org/docs/getting-started.html)
+* [JWT tokens and security – working principles and use cases](https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/)
 
 ## :file_folder: License
 
