@@ -7,6 +7,7 @@ const fs = require('fs');
 const { promisify } = require('util');
 const pipeline = promisify(require('stream').pipeline);
 
+// use Mongoose find query model to find posts, most recent first
 module.exports.readPost = (req, res) => {
 	PostModel.find((err, docs) => {
 		if (!err) res.send(docs);
@@ -87,6 +88,7 @@ module.exports.deletePost = (req, res) => {
 	});
 };
 
+// use Mongoose $addToSet operator to add user id to post likers & user likes arrays
 module.exports.likePost = async (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
 		return res.status(400).send('ID unknown : ' + req.params.id);
@@ -118,6 +120,7 @@ module.exports.likePost = async (req, res) => {
 	}
 };
 
+// use Mongoose $pull operator to remove user id from post likers & user likes arrays
 module.exports.unlikePost = async (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
 		return res.status(400).send('ID unknown : ' + req.params.id);
@@ -149,6 +152,7 @@ module.exports.unlikePost = async (req, res) => {
 	}
 };
 
+// use Mongoose push operator to add user comment to a post
 module.exports.commentPost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
 		return res.status(400).send('ID unknown : ' + req.params.id);
@@ -177,6 +181,7 @@ module.exports.commentPost = (req, res) => {
 	}
 };
 
+// use Mongoose findById query model to find then replace comment text
 module.exports.editCommentPost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
 		return res.status(400).send('ID unknown : ' + req.params.id);
