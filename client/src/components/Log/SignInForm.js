@@ -2,14 +2,21 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const SignInForm = () => {
+  //define constants
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+  // handle user input
 	const handleLogin = (e) => {
 		e.preventDefault();
+
+    // define constants
 		const emailError = document.querySelector('.email.error');
 		const passwordError = document.querySelector('.password.error');
 
+    // post login data array
+    // if errors display them using innerHTML
+    // if good navigate to home page
 		axios({
 			method: 'post',
 			url: `${process.env.REACT_APP_API_URL}api/user/login`,
@@ -35,6 +42,8 @@ const SignInForm = () => {
 
 	return (
 		<form action="" onSubmit={handleLogin} id="sign-up-form">
+
+      {/* user input email */}
 			<label htmlFor="email">Email</label>
 			<br />
 			<input
@@ -46,6 +55,8 @@ const SignInForm = () => {
 			/>
 			<div className="email error"></div>
 			<br />
+
+      {/* user input password */}
 			<label htmlFor="password">Password</label>
 			<br />
 			<input

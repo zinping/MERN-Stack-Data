@@ -3,14 +3,18 @@ import axios from 'axios';
 import SignInForm from './SignInForm';
 
 const SignUpForm = () => {
+	// define constants
 	const [formSubmit, setFormSubmit] = useState(false);
 	const [nickname, setNickname] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [controlPassword, setControlPassword] = useState('');
 
+	// handle user inputs
 	const handleRegister = async (e) => {
 		e.preventDefault();
+
+		// define constants
 		const terms = document.getElementById('terms');
 		const nicknameError = document.querySelector('.nickname.error');
 		const emailError = document.querySelector('.email.error');
@@ -20,13 +24,16 @@ const SignUpForm = () => {
 		);
 		const termsError = document.querySelector('.terms.error');
 
+		//define error text
 		passwordConfirmError.innerHTML = '';
 		termsError.innerHTML = '';
 
+		// logic to check password correct & terms box checked
+		// if good post user data to backend using Axios
+		// any errors are shown using innerHTML
 		if (password !== controlPassword || !terms.checked) {
 			if (password !== controlPassword)
-				passwordConfirmError.innerHTML =
-					'The password is not correct';
+				passwordConfirmError.innerHTML = 'The password is not correct';
 
 			if (!terms.checked)
 				termsError.innerHTML = 'Please accept the terms & conditions';
@@ -54,6 +61,8 @@ const SignUpForm = () => {
 		}
 	};
 
+	// Once formSubmit is true Render sign-in form
+	// Otherwise show sign-up form
 	return (
 		<>
 			{formSubmit ? (
@@ -66,6 +75,7 @@ const SignUpForm = () => {
 				</>
 			) : (
 				<form action="" onSubmit={handleRegister} id="sign-up-form">
+					{/* user input nickname */}
 					<label htmlFor="nickname">Nickname</label>
 					<br />
 					<input
@@ -77,6 +87,8 @@ const SignUpForm = () => {
 					/>
 					<div className="nickname error"></div>
 					<br />
+
+					{/* user input email */}
 					<label htmlFor="email">Email</label>
 					<br />
 					<input
@@ -88,6 +100,8 @@ const SignUpForm = () => {
 					/>
 					<div className="email error"></div>
 					<br />
+
+					{/* user input password */}
 					<label htmlFor="password">Password</label>
 					<br />
 					<input
@@ -99,6 +113,8 @@ const SignUpForm = () => {
 					/>
 					<div className="password error"></div>
 					<br />
+
+					{/* user input confirm password */}
 					<label htmlFor="password-conf">Confirm password</label>
 					<br />
 					<input
@@ -110,9 +126,11 @@ const SignUpForm = () => {
 					/>
 					<div className="password-confirm error"></div>
 					<br />
+
+					{/* user input accept terms */}
 					<input type="checkbox" id="terms" />
 					<label htmlFor="terms">
-						I accept{' '}
+						I accept the{' '}
 						<a href="/" target="_blank" rel="noopener noreferrer">
 							Terms and Conditions
 						</a>
