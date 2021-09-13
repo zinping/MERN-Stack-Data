@@ -20,9 +20,9 @@
     .home-header {
       margin: 0 auto 12px;
       text-align: center;
-      
+
       .connection-form {
-        background: $color-4;
+        background: $color-1;
         border-radius: 20px;
         padding: 20px;
 
@@ -40,7 +40,7 @@
           }
           .active-btn {
             background: $color-1;
-  
+
             &:hover {
               background: $color-2;
             }
@@ -58,7 +58,7 @@
             font-size: 1.2rem;
             font-family: $font-2;
             border-radius: 20px;
-  
+
             &:focus {
               box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
             }
@@ -79,10 +79,10 @@
     @media screen and(max-width: 990px) {
       display: none;
     }
-  
+
     .right-side-container {
       position: fixed;
-    
+
     }
   }
 }
