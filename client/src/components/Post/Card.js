@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { dateParser, isEmpty } from '../Utils';
 import FollowHandler from '../Profil/FollowHandler';
 import LikeButton from './LikeButton';
@@ -27,6 +28,7 @@ const Card = ({ post }) => {
 		!isEmpty(usersData[0]) && setIsLoading(false);
 	}, [usersData]);
 
+  // show user data on left & right cards where there is data and id matches
 	return (
 		<li className="card-container" key={post._id}>
 			{isLoading ? (
@@ -74,7 +76,7 @@ const Card = ({ post }) => {
 								/>
 								<div className="button-container">
 									<button className="btn" onClick={updateItem}>
-										Valider modification
+										Validate modification
 									</button>
 								</div>
 							</div>

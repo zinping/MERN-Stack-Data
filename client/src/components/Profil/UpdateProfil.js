@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import LeftNav from '../LeftNav';
 import { useDispatch, useSelector } from 'react-redux';
+
+import LeftNav from '../LeftNav';
 import UploadImg from './UploadImg';
 import { updateBio } from '../../actions/user.actions';
 import { dateParser } from '../Utils';
@@ -28,7 +29,7 @@ const UpdateProfil = () => {
 			<div className="update-container">
 				<div className="left-part">
 					<h3>Photo de profil</h3>
-					<img src={userData.picture} alt="user-pic" />
+					<img src={userData.picture} alt="user profile" />
 					<UploadImg />
 					<p>{error.maxSize}</p>
 					<p>{error.format}</p>
@@ -51,23 +52,23 @@ const UpdateProfil = () => {
 									defaultValue={userData.bio}
 									onChange={(e) => setBio(e.target.value)}
 								></textarea>
-								<button onClick={handleUpdate}>Valider modifications</button>
+								<button onClick={handleUpdate}>Confirm modifications</button>
 							</>
 						)}
 					</div>
-					<h4>Membre depuis le : {dateParser(userData.createdAt)}</h4>
+					<h4>Member since: {dateParser(userData.createdAt)}</h4>
 					<h5 onClick={() => setFollowingPopup(true)}>
-						Abonnements : {userData.following ? userData.following.length : ''}
+						Following: {userData.following ? userData.following.length : ''}
 					</h5>
 					<h5 onClick={() => setFollowersPopup(true)}>
-						Abonnés : {userData.followers ? userData.followers.length : ''}
+						Followers: {userData.followers ? userData.followers.length : ''}
 					</h5>
 				</div>
 			</div>
 			{followingPopup && (
 				<div className="popup-profil-container">
 					<div className="modal">
-						<h3>Abonnements</h3>
+						<h3>Following</h3>
 						<span className="cross" onClick={() => setFollowingPopup(false)}>
 							&#10005;
 						</span>
@@ -98,7 +99,7 @@ const UpdateProfil = () => {
 			{followersPopup && (
 				<div className="popup-profil-container">
 					<div className="modal">
-						<h3>Abonnés</h3>
+						<h3>Followers</h3>
 						<span className="cross" onClick={() => setFollowersPopup(false)}>
 							&#10005;
 						</span>

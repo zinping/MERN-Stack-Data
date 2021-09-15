@@ -1,6 +1,7 @@
 # :zap: MERN Full Stack Tracker
 
 * Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend.
+* Tutorial code from [From Scratch - Développement Web](https://www.youtube.com/channel/UCHGLV13U7YRbjrKpqfbtyYg) with changes to styling and logic - see [:clap: Inspiration](#clap-inspiration) below
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/mern-stack-data?style=plastic)
@@ -32,7 +33,7 @@
 ### :books: Backend
 
 * MongoDB Atlas used as the backend database - requires mongodb to be running
-* Mongoose models used to interact with the database
+* [Mongoose query models](https://mongoosejs.com/docs/queries.html) used to interact with the database
 * Postman used to test the backend
 * Note: I used 'my ip address' as the whitelist network access in MongoDB.Atlas but this required daily updating when my ip address changed - otherwise with a non-matching ip address the backend simply did not work. Better to use the localhost address to avoid this problem but may be less secure.
 * Node.js routes used with controller functions
@@ -62,7 +63,9 @@
 ## :signal_strength: Frontend Technologies
 
 * [React framework v17](https://reactjs.org/)
-* [Axios v0.21.1](https://www.npmjs.com/package/axios) promise-based http client
+* [Redux thunk v2](https://www.npmjs.com/package/redux-thunk) middleware
+* [Font Awesome v5](https://fontawesome.com/) icon library & toolkit
+* [Axios v0.21.4](https://www.npmjs.com/package/axios) promise-based http client
 
 ## :floppy_disk: Setup - Backend
 
@@ -78,27 +81,7 @@
 
 ## :computer: Code Examples
 
-* Extract from `server.js` - connects to database using mongoose
-
-```javascript
-const uri = process.env.ATLAS_URI;
-const options = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
-}
-
-mongoose
-  .connect(uri, options)
-  .catch(error => console.log(error));
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-console.log("MongoDB database connection established successfully");
-});
-mongoose.connection.on('error', err => {
-  logError('mongoose connection error', err);
-});
+```
 ```
 
 ## :cool: Backend Features
@@ -111,12 +94,16 @@ mongoose.connection.on('error', err => {
 
 ## :clipboard: Status & To-Do List
 
-* Status: Backend in work
-* To-Do: Complete
+* Status: Backend & frontend in work
+* To-Do: Complete. Replace all styling.
 
 ## :clap: Inspiration
 
+* [Javascript Full-stack Projet MERN | Créer un réseau social | Partie Back-end](https://www.youtube.com/watch?v=SUPDFHuvhRc&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP) - in French
+* [Javascript Full-stack Projet MERN | Créer un réseau social | Partie Front-end](https://www.youtube.com/watch?v=ghdRD3pt8rg&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP&index=2) - in French
+* [Projet React / Redux Apprendre Redux de zéro](https://www.youtube.com/watch?v=1r6-WjzDgbM&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP&index=3) - in French
 * [React documentation](https://reactjs.org/docs/getting-started.html)
+* [React Hooks API Reference](https://reactjs.org/docs/hooks-reference.html#useeffect)
 * [JWT tokens and security – working principles and use cases](https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/)
 
 ## :file_folder: License

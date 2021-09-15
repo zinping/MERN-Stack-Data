@@ -33,6 +33,7 @@ export const getPosts = (num) => {
 	};
 };
 
+// POST post data to backend using Axios
 export const addPost = (data) => {
 	return (dispatch) => {
 		return axios
@@ -47,6 +48,7 @@ export const addPost = (data) => {
 	};
 };
 
+// PATCH id of user liking post to the post data on the backend using Axios
 export const likePost = (postId, userId) => {
 	return (dispatch) => {
 		return axios({
