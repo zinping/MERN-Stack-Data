@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { isEmpty } from '../Utils';
-import FollowHandler from './FollowHandler';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { isEmpty } from "../Utils";
+import FollowHandler from "./FollowHandler";
 
 const FriendsHint = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ const FriendsHint = () => {
 			usersData.map((user) => {
 				if (user._id !== userData._id && !user.followers.includes(userData._id))
 					return array.push(user._id);
-        return null;
+				return null;
 			});
 			array.sort(() => 0.5 - Math.random());
 			if (window.innerHeight > 780) {
@@ -60,14 +61,13 @@ const FriendsHint = () => {
 											<p>{usersData[i].nickname}</p>
 											<FollowHandler
 												idToFollow={usersData[i]._id}
-												type={'suggestion'}
+												type={"suggestion"}
 											/>
 										</li>
 									);
 								}
 							}
-						})
-          }
+						})}
 				</ul>
 			)}
 		</div>

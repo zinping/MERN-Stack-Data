@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { addComment, getPosts } from '../../actions/post.actions';
 import FollowHandler from '../Profil/FollowHandler';
 import { isEmpty, timestampParser } from '../Utils';
 import EditDeleteComment from './EditDeleteComment';
 
+// function to return comments in a card
+// Utils function changes format of timestamp
 const CardComments = ({ post }) => {
 	const [text, setText] = useState('');
 	const usersData = useSelector((state) => state.usersReducer);

@@ -17,6 +17,7 @@ const UpdateProfil = () => {
 	const [followingPopup, setFollowingPopup] = useState(false);
 	const [followersPopup, setFollowersPopup] = useState(false);
 
+  // handle update of user bio using user.actions updateBio function
 	const handleUpdate = () => {
 		dispatch(updateBio(userData._id, bio));
 		setUpdateForm(false);
@@ -25,10 +26,10 @@ const UpdateProfil = () => {
 	return (
 		<div className="profil-container">
 			<LeftNav />
-			<h1> Profil de {userData.nickname}</h1>
+			<h1> Profile of {userData.nickname}</h1>
 			<div className="update-container">
 				<div className="left-part">
-					<h3>Photo de profil</h3>
+					<h3>User Photo</h3>
 					<img src={userData.picture} alt="user profile" />
 					<UploadImg />
 					<p>{error.maxSize}</p>
@@ -41,7 +42,7 @@ const UpdateProfil = () => {
 							<>
 								<p onClick={() => setUpdateForm(!updateForm)}>{userData.bio}</p>
 								<button onClick={() => setUpdateForm(!updateForm)}>
-									Modifier bio
+									Modify bio
 								</button>
 							</>
 						)}

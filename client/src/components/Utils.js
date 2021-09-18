@@ -1,3 +1,4 @@
+// function to convert a date number input to a date string of specified format
 export const dateParser = (num) => {
 	let options = {
 		hour: '2-digit',
@@ -14,6 +15,7 @@ export const dateParser = (num) => {
 	return date.toString();
 };
 
+// function to convert a time number input to a date string of specified format
 export const timestampParser = (num) => {
 	let options = {
 		hour: '2-digit',

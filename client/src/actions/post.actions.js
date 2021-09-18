@@ -1,24 +1,24 @@
-import axios from 'axios';
+import axios from "axios";
 
 // posts
-export const GET_POSTS = 'GET_POSTS';
-export const GET_ALL_POSTS = 'GET_ALL_POSTS';
-export const ADD_POST = 'ADD_POST';
-export const LIKE_POST = 'LIKE_POST';
-export const UNLIKE_POST = 'UNLIKE_POST';
-export const UPDATE_POST = 'UPDATE_POST';
-export const DELETE_POST = 'DELETE_POST';
+export const GET_POSTS = "GET_POSTS";
+export const GET_ALL_POSTS = "GET_ALL_POSTS";
+export const ADD_POST = "ADD_POST";
+export const LIKE_POST = "LIKE_POST";
+export const UNLIKE_POST = "UNLIKE_POST";
+export const UPDATE_POST = "UPDATE_POST";
+export const DELETE_POST = "DELETE_POST";
 
 // comments
-export const ADD_COMMENT = 'ADD_COMMENT';
-export const EDIT_COMMENT = 'EDIT_COMMENT';
-export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const ADD_COMMENT = "ADD_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
 
 // trends
-export const GET_TRENDS = 'GET_TRENDS';
+export const GET_TRENDS = "GET_TRENDS";
 
 // errors
-export const GET_POST_ERRORS = 'GET_POST_ERRORS';
+export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
 export const getPosts = (num) => {
 	return (dispatch) => {
@@ -42,7 +42,7 @@ export const addPost = (data) => {
 				if (res.data.errors) {
 					dispatch({ type: GET_POST_ERRORS, payload: res.data.errors });
 				} else {
-					dispatch({ type: GET_POST_ERRORS, payload: '' });
+					dispatch({ type: GET_POST_ERRORS, payload: "" });
 				}
 			});
 	};
@@ -52,7 +52,7 @@ export const addPost = (data) => {
 export const likePost = (postId, userId) => {
 	return (dispatch) => {
 		return axios({
-			method: 'patch',
+			method: "patch",
 			url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
 			data: { id: userId },
 		})
@@ -63,10 +63,11 @@ export const likePost = (postId, userId) => {
 	};
 };
 
+// PATCH id of user unliking post to the post data on the backend using Axios
 export const unlikePost = (postId, userId) => {
 	return (dispatch) => {
 		return axios({
-			method: 'patch',
+			method: "patch",
 			url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
 			data: { id: userId },
 		})
@@ -77,10 +78,11 @@ export const unlikePost = (postId, userId) => {
 	};
 };
 
+// PUT: id of user with updated message on the backend using Axios
 export const updatePost = (postId, message) => {
 	return (dispatch) => {
 		return axios({
-			method: 'put',
+			method: "put",
 			url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
 			data: { message },
 		})
@@ -91,10 +93,11 @@ export const updatePost = (postId, message) => {
 	};
 };
 
+// DELETE post using post ID
 export const deletePost = (postId) => {
 	return (dispatch) => {
 		return axios({
-			method: 'delete',
+			method: "delete",
 			url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
 		})
 			.then((res) => {
@@ -104,10 +107,11 @@ export const deletePost = (postId) => {
 	};
 };
 
+// PATCH (update) post to add comment & commenters nickname
 export const addComment = (postId, commenterId, text, commenternickname) => {
 	return (dispatch) => {
 		return axios({
-			method: 'patch',
+			method: "patch",
 			url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
 			data: { commenterId, text, commenternickname },
 		})
@@ -118,10 +122,11 @@ export const addComment = (postId, commenterId, text, commenternickname) => {
 	};
 };
 
+// PATCH (update) post to add edited comment
 export const editComment = (postId, commentId, text) => {
 	return (dispatch) => {
 		return axios({
-			method: 'patch',
+			method: "patch",
 			url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
 			data: { commentId, text },
 		})
@@ -135,7 +140,7 @@ export const editComment = (postId, commentId, text) => {
 export const deleteComment = (postId, commentId) => {
 	return (dispatch) => {
 		return axios({
-			method: 'patch',
+			method: "patch",
 			url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
 			data: { commentId },
 		})
