@@ -1,6 +1,7 @@
 # :zap: MERN Full Stack Tracker
 
 * Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend.
+* Note on full-stacks: MEAN stack a better option for large-scale applications while MERN stack leads the race in the faster development of smaller applications.
 * Tutorial code from [From Scratch - Développement Web](https://www.youtube.com/channel/UCHGLV13U7YRbjrKpqfbtyYg) with changes to styling and logic - see [:clap: Inspiration](#clap-inspiration) below
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
@@ -24,7 +25,7 @@
   * [:computer: Code Examples](#computer-code-examples)
   * [:cool: Backend Features](#cool-backend-features)
     * [:cool: Frontend Features](#cool-frontend-featurres)
-  * [:clipboard: Status & To-Do List](#clipboard-status--to-do-list)
+  * [:clipboard: Status & ToDo List](#clipboard-status-and-todo-list)
   * [:clap: Inspiration](#clap-inspiration)
   * [:envelope: Contact](#envelope-contact)
 
@@ -41,7 +42,7 @@
 
 ### :books: Frontend
 
-* tba
+* [React reducers](https://reactjs.org/docs/hooks-reference.html) functions that take the current state and an action as arguments, and return a new state result. In other words, (state, action) => newState.
 
 ## :camera: Screenshots
 
@@ -59,6 +60,7 @@
 * [Express.js middleware v4](https://expressjs.com/)
 * [Node.js v14](https://nodejs.org/es/)
 * [JSON Web Tokens - JWT v8](https://www.npmjs.com/package/jsonwebtoken) to supply JSON Web Tokens
+* [bcrypt v5](https://www.npmjs.com/package/bcrypt) to hash passwords
 
 ## :signal_strength: Frontend Technologies
 
@@ -81,12 +83,46 @@
 
 ## :computer: Code Examples
 
-```
+* React useReducer example with lazy state initialization by passing init function
+
+```javascript
+function init(initialCount) {
+  return {count: initialCount};
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    case 'reset':
+      return init(action.payload);
+    default:
+      throw new Error();
+  }
+}
+
+function Counter({initialCount}) {
+  const [state, dispatch] = useReducer(reducer, initialCount, init);
+  return (
+    <>
+      Count: {state.count}
+      <button
+        onClick={() => dispatch({type: 'reset', payload: initialCount})}>
+        Reset
+      </button>
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+
 ```
 
 ## :cool: Backend Features
 
-* All data stored in collections in a mongoDB Atlas database that costs nothing to use in the free tier option. Data can be edited from the mongoDB.Atlas collection or from within the React frontend
+* All data stored in collections in a mongoDB Atlas database that costs nothing to use in the free tier option. Data can be edited from the mongoDB.Atlas collection or from React frontend
 
 ### :cool: Frontend Features
 
@@ -94,8 +130,8 @@
 
 ## :clipboard: Status & To-Do List
 
-* Status: Backend & frontend in work
-* To-Do: Complete. Replace all styling.
+* Status: Part working, requires more testing
+* To-Do: Complete commenting etc. & test. Replace all styling.
 
 ## :clap: Inspiration
 
@@ -105,6 +141,8 @@
 * [React documentation](https://reactjs.org/docs/getting-started.html)
 * [React Hooks API Reference](https://reactjs.org/docs/hooks-reference.html#useeffect)
 * [JWT tokens and security – working principles and use cases](https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/)
+* [Medium article: Why MERN?](https://medium.com/geekculture/why-mern-a125cca5ab0e)
+* [Webuters: Why MERN Stack is Popular for Web and Mobile Apps?](https://www.webuters.com/why-mern-stack-is-popular-for-web-and-mobile-apps)
 
 ## :file_folder: License
 
