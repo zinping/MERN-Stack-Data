@@ -1,38 +1,39 @@
-const postModel = require('../models/post.model');
-const PostModel = require('../models/post.model');
-const UserModel = require('../models/user.model');
-const { uploadErrors } = require('../utils/errors.utils');
-const ObjectID = require('mongoose').Types.ObjectId;
-const fs = require('fs');
-const { promisify } = require('util');
-const pipeline = promisify(require('stream').pipeline);
+const postModel = require("../models/post.model");
+const PostModel = require("../models/post.model");
+const UserModel = require("../models/user.model");
+const { uploadErrors } = require("../utils/errors.utils");
+const ObjectID = require("mongoose").Types.ObjectId;
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
 
 // use Mongoose find query model to find posts, most recent first
 module.exports.readPost = (req, res) => {
 	PostModel.find((err, docs) => {
 		if (!err) res.send(docs);
-		else console.log('Error to get data : ' + err);
+		else console.log("Error to get data : " + err);
 	}).sort({ createdAt: -1 });
 };
 
+// create a file and store in uploads/posts/ folder
 module.exports.createPost = async (req, res) => {
 	let fileName;
 
 	if (req.file !== null) {
 		try {
 			if (
-				req.file.detectedMimeType != 'image/jpg' &&
-				req.file.detectedMimeType != 'image/png' &&
-				req.file.detectedMimeType != 'image/jpeg'
+				req.file.detectedMimeType != "image/jpg" &&
+				req.file.detectedMimeType != "image/png" &&
+				req.file.detectedMimeType != "image/jpeg"
 			)
-				throw Error('invalid file');
+				throw Error("invalid file");
 
-			if (req.file.size > 500000) throw Error('max size');
+			if (req.file.size > 500000) throw Error("max size");
 		} catch (err) {
 			const errors = uploadErrors(err);
 			return res.status(201).json({ errors });
 		}
-		fileName = req.body.posterId + Date.now() + '.jpg';
+		fileName = req.body.posterId + Date.now() + ".jpg";
 
 		await pipeline(
 			req.file.stream,
@@ -45,7 +46,7 @@ module.exports.createPost = async (req, res) => {
 	const newPost = new postModel({
 		posterId: req.body.posterId,
 		message: req.body.message,
-		picture: req.file !== null ? './uploads/posts/' + fileName : '',
+		picture: req.file !== null ? "./uploads/posts/" + fileName : "",
 		video: req.body.video,
 		likers: [],
 		comments: [],
@@ -61,7 +62,7 @@ module.exports.createPost = async (req, res) => {
 
 module.exports.updatePost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	const updatedRecord = {
 		message: req.body.message,
@@ -73,25 +74,25 @@ module.exports.updatePost = (req, res) => {
 		{ new: true },
 		(err, docs) => {
 			if (!err) res.send(docs);
-			else console.log('Update error : ' + err);
+			else console.log("Update error : " + err);
 		}
 	);
 };
 
 module.exports.deletePost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	PostModel.findByIdAndRemove(req.params.id, (err, docs) => {
 		if (!err) res.send(docs);
-		else console.log('Delete error : ' + err);
+		else console.log("Delete error : " + err);
 	});
 };
 
 // use Mongoose $addToSet operator to add user id to post likers & user likes arrays
 module.exports.likePost = async (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	try {
 		await PostModel.findByIdAndUpdate(
@@ -123,7 +124,7 @@ module.exports.likePost = async (req, res) => {
 // use Mongoose $pull operator to remove user id from post likers & user likes arrays
 module.exports.unlikePost = async (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	try {
 		await PostModel.findByIdAndUpdate(
@@ -155,7 +156,7 @@ module.exports.unlikePost = async (req, res) => {
 // use Mongoose push operator to add user comment to a post
 module.exports.commentPost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	try {
 		return PostModel.findByIdAndUpdate(
@@ -184,7 +185,7 @@ module.exports.commentPost = (req, res) => {
 // use Mongoose findById query model to find then replace comment text
 module.exports.editCommentPost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	try {
 		return PostModel.findById(req.params.id, (err, docs) => {
@@ -192,7 +193,7 @@ module.exports.editCommentPost = (req, res) => {
 				comment._id.equals(req.body.commentId)
 			);
 
-			if (!theComment) return res.status(404).send('Comment not found');
+			if (!theComment) return res.status(404).send("Comment not found");
 			theComment.text = req.body.text;
 
 			return docs.save((err) => {
@@ -207,7 +208,7 @@ module.exports.editCommentPost = (req, res) => {
 
 module.exports.deleteCommentPost = (req, res) => {
 	if (!ObjectID.isValid(req.params.id))
-		return res.status(400).send('ID unknown : ' + req.params.id);
+		return res.status(400).send("ID unknown : " + req.params.id);
 
 	try {
 		return PostModel.findByIdAndUpdate(

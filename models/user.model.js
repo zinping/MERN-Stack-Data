@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { isEmail } = require('validator');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const { isEmail } = require("validator");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
 	{
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
 		},
 		picture: {
 			type: String,
-			default: './uploads/profile/random-user.png',
+			default: "./uploads/profile/random-user.png",
 		},
 		bio: {
 			type: String,
@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema(
 );
 
 // run function before saving: 'block',
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
 	const salt = await bcrypt.genSalt();
 	this.password = await bcrypt.hash(this.password, salt);
 	next();
@@ -63,11 +63,11 @@ userSchema.statics.login = async function (email, password) {
 		if (auth) {
 			return user;
 		}
-		throw Error('incorrect password');
+		throw Error("incorrect password");
 	}
-	throw Error('incorrect email');
+	throw Error("incorrect email");
 };
 
-const UserModel = mongoose.model('user', userSchema);
+const UserModel = mongoose.model("user", userSchema);
 
 module.exports = UserModel;
