@@ -1,8 +1,9 @@
-const UserModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 
+const UserModel = require("../models/user.model");
+const { signUpErrors, signInErrors } = require("../utils/errors.utils");
 const maxAge = 3 * 24 * 60 * 60 * 1000; // 3 days
+
 
 const createToken = (id) => {
 	return jwt.sign({ id }, process.env.TOKEN_SECRET, {
@@ -22,6 +23,8 @@ module.exports.signUp = async (req, res) => {
 	}
 };
 
+// POST user email & password, if successful returns user id
+// uses createToken function to create a cookie for the user, valid for maxAge
 module.exports.signIn = async (req, res) => {
 	const { email, password } = req.body;
 	try {

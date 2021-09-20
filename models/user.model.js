@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
 	}
 );
 
-// run function before saving: 'block',
+// run function to convert user password to encrypted version before saving: 'block',
 userSchema.pre("save", async function (next) {
 	const salt = await bcrypt.genSalt();
 	this.password = await bcrypt.hash(this.password, salt);
@@ -68,6 +68,7 @@ userSchema.statics.login = async function (email, password) {
 	throw Error("incorrect email");
 };
 
+// MongoDB will create 'users' collection from this 'user' model
 const UserModel = mongoose.model("user", userSchema);
 
 module.exports = UserModel;
