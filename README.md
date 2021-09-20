@@ -54,10 +54,10 @@
 ## :signal_strength: Backend Technologies
 
 * [MongoDB Community Server v4](https://www.mongodb.com/download-center/community)
-* [Mongoose v5](https://mongoosejs.com/) object modelling for Node.js
+* [Mongoose v6](https://mongoosejs.com/) object modelling for Node.js
 * [MongoDB Compass v1](https://www.mongodb.com/es/products/compass) to explore and manipulate MongoDB data
-* [npm mongodb v3](https://www.npmjs.com/package/mongodb) official MongoDB driver for Node.js
 * [Express.js middleware v4](https://expressjs.com/)
+* [Express Fileupload v1](https://www.npmjs.com/package/express-fileupload) to upload files
 * [Node.js v14](https://nodejs.org/es/)
 * [JSON Web Tokens - JWT v8](https://www.npmjs.com/package/jsonwebtoken) to supply JSON Web Tokens
 * [bcrypt v5](https://www.npmjs.com/package/bcrypt) to hash passwords
@@ -65,6 +65,7 @@
 ## :signal_strength: Frontend Technologies
 
 * [React framework v17](https://reactjs.org/)
+* [Redux v4](https://www.npmjs.com/package/redux) state container for JavaScript apps.
 * [Redux thunk v2](https://www.npmjs.com/package/redux-thunk) middleware
 * [Font Awesome v5](https://fontawesome.com/) icon library & toolkit
 * [Axios v0.21.4](https://www.npmjs.com/package/axios) promise-based http client
@@ -73,7 +74,7 @@
 
 * Install backend dependencies using `npm i`
 * Install [nodemon](https://www.npmjs.com/package/nodemon) globally if you don't already have it
-* Register with [MongoDB Atlas](www.mongodb.com), create & configure a database cluster and add cluster connection string to `config/.env` file
+* Register with [MongoDB Atlas](www.mongodb.com), create & configure a database cluster and add username &  connection string to `config/.env` file
 * Run `nodemon server` for a dev server
 * Navigate to `http://localhost:5000/`. The server will automatically reload if you change any of the source files
 
@@ -131,7 +132,7 @@ function Counter({initialCount}) {
 ## :clipboard: Status & To-Do List
 
 * Status: Part working, requires more testing
-* To-Do: Complete commenting etc. & test. Replace all styling.
+* To-Do: Complete commenting etc. & test backend. Fix frontend. Replace all styling.
 
 ## :clap: Inspiration
 
