@@ -46,10 +46,10 @@
 
 ## :camera: Screenshots
 
-![Backend screenshot](./img/mongodb.png)
-![Backend screenshot](./img/postman.png)
+![Backend screenshot](./imgs/mongodb.png)
+![Backend screenshot](./imgs/postman.png)
 
-![Frontend screenshot](./img/list.png)
+![Frontend screenshot](./imgs/list.png)
 
 ## :signal_strength: Backend Technologies
 
