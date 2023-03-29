@@ -2,7 +2,6 @@
 
 * Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend.
 * Note on full-stacks: MEAN stack a better option for large-scale applications while MERN stack leads the race in the faster development of smaller applications.
-* Tutorial code from [From Scratch - Développement Web](https://www.youtube.com/channel/UCHGLV13U7YRbjrKpqfbtyYg) with changes to styling and logic - see [:clap: Inspiration](#clap-inspiration) below
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/mern-stack-data?style=plastic)
@@ -12,21 +11,21 @@
 
 ## :page_facing_up: Table of contents
 
-* [:zap: MERN Stack Data](#zap-mern-stack-data)
-  * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
+* [:zap: MERN Full Stack Tracker](#zap-mern-full-stack-tracker)
+  * [:page\_facing\_up: Table of contents](#page_facing_up-table-of-contents)
   * [:books: General info](#books-general-info)
     * [:books: Backend](#books-backend)
     * [:books: Frontend](#books-frontend)
   * [:camera: Screenshots](#camera-screenshots)
-  * [:signal_strength: Backend Technologies](#signal_strength-backend-technologies)
-  * [:signal_strength: Frontend Technologies](#signal_strength-frontend-technologies)
-  * [:floppy_disk: Setup - Backend](#floppy_disk-setup---backend)
-    * [:floppy_disk: Setup - Frontend](#floppy_disk-setup---frontend)
+  * [:signal\_strength: Backend Technologies](#signal_strength-backend-technologies)
+  * [:signal\_strength: Frontend Technologies](#signal_strength-frontend-technologies)
+  * [:floppy\_disk: Setup - Backend](#floppy_disk-setup---backend)
+    * [:floppy\_disk: Setup - Frontend](#floppy_disk-setup---frontend)
   * [:computer: Code Examples](#computer-code-examples)
-  * [:cool: Backend Features](#cool-backend-features)
-    * [:cool: Frontend Features](#cool-frontend-featurres)
-  * [:clipboard: Status & ToDo List](#clipboard-status-and-todo-list)
+  * [:cool: Features](#cool-features)
+  * [:clipboard: Status \& To-Do List](#clipboard-status--to-do-list)
   * [:clap: Inspiration](#clap-inspiration)
+  * [:file\_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
 ## :books: General info
@@ -47,27 +46,18 @@
 ## :camera: Screenshots
 
 ![Backend screenshot](./imgs/mongodb.png)
-![Backend screenshot](./imgs/postman.png)
-
 ![Frontend screenshot](./imgs/list.png)
 
 ## :signal_strength: Backend Technologies
 
 * [MongoDB Community Server v4](https://www.mongodb.com/download-center/community)
-* [Mongoose v6](https://mongoosejs.com/) object modelling for Node.js
 * [MongoDB Compass v1](https://www.mongodb.com/es/products/compass) to explore and manipulate MongoDB data
 * [Express.js middleware v4](https://expressjs.com/)
-* [Express Fileupload v1](https://www.npmjs.com/package/express-fileupload) to upload files
-* [Node.js v14](https://nodejs.org/es/)
-* [JSON Web Tokens - JWT v8](https://www.npmjs.com/package/jsonwebtoken) to supply JSON Web Tokens
-* [bcrypt v5](https://www.npmjs.com/package/bcrypt) to hash passwords
+* [Node.js v18](https://nodejs.org/es/)
 
 ## :signal_strength: Frontend Technologies
 
 * [React framework v17](https://reactjs.org/)
-* [Redux v4](https://www.npmjs.com/package/redux) state container for JavaScript apps.
-* [Redux thunk v2](https://www.npmjs.com/package/redux-thunk) middleware
-* [Font Awesome v5](https://fontawesome.com/) icon library & toolkit
 * [Axios v0.21.4](https://www.npmjs.com/package/axios) promise-based http client
 
 ## :floppy_disk: Setup - Backend
@@ -121,29 +111,19 @@ function Counter({initialCount}) {
 
 ```
 
-## :cool: Backend Features
-
-* All data stored in collections in a mongoDB Atlas database that costs nothing to use in the free tier option. Data can be edited from the mongoDB.Atlas collection or from React frontend
-
-### :cool: Frontend Features
+## :cool: Features
 
 * Uses the [React componentDidMount() method](https://reactjs.org/docs/state-and-lifecycle.html)
 
 ## :clipboard: Status & To-Do List
 
-* Status: Part working, requires more testing
-* To-Do: Complete commenting etc. & test backend. Fix frontend. Replace all styling.
+* Status: Backend removed
+* To-Do: Create new backend. Replace frontend
 
 ## :clap: Inspiration
 
-* [Javascript Full-stack Projet MERN | Créer un réseau social | Partie Back-end](https://www.youtube.com/watch?v=SUPDFHuvhRc&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP) - in French
-* [Javascript Full-stack Projet MERN | Créer un réseau social | Partie Front-end](https://www.youtube.com/watch?v=ghdRD3pt8rg&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP&index=2) - in French
-* [Projet React / Redux Apprendre Redux de zéro](https://www.youtube.com/watch?v=1r6-WjzDgbM&list=PLEiMYEzpB4QsZIxBeWo9T1fCnii0XHfHP&index=3) - in French
 * [React documentation](https://reactjs.org/docs/getting-started.html)
-* [React Hooks API Reference](https://reactjs.org/docs/hooks-reference.html#useeffect)
-* [JWT tokens and security – working principles and use cases](https://www.vaadata.com/blog/jwt-tokens-and-security-working-principles-and-use-cases/)
 * [Medium article: Why MERN?](https://medium.com/geekculture/why-mern-a125cca5ab0e)
-* [Webuters: Why MERN Stack is Popular for Web and Mobile Apps?](https://www.webuters.com/why-mern-stack-is-popular-for-web-and-mobile-apps)
 
 ## :file_folder: License
 
