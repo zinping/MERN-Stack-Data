@@ -1,5 +1,5 @@
-import { ThemeProvider } from "@emotion/react";
-import { Box, CssBaseline } from "@mui/material";
+import { Box } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -18,7 +18,7 @@ function App() {
           <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
             <Navbar />
             <Routes>
-              <Route path="/" element={<Dashboard />}  />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/forecasts" element={<Forecasts />} />
             </Routes>
           </Box>
