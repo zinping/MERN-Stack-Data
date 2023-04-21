@@ -30,7 +30,9 @@ const Forecasts = () => {
         return [i, revenue];
       }
     );
+    console.log("formatted: ", formatted);
     const regressionLine = regression.linear(formatted);
+    console.log("regression line: ", regressionLine);
 
     return monthData.map(({ month, revenue }, i: number) => {
       return {

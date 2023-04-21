@@ -31,8 +31,11 @@ const Row2 = () => {
   const { data: operationalData } = useGetKpisQuery();
   const { data: productData } = useGetProductsQuery();
 
+  // useMemo(calculateValue, dependencies)
   const operationalExpenses = useMemo(() => {
-    return (
+    // Use React hook useMemo to cache results of data mapping
+    // Map data to return array with shortened month & expenses
+    const operationalExpensesData =
       operationalData &&
       operationalData[0].monthlyData.map(
         ({ month, operationalExpenses, nonOperationalExpenses }) => {
@@ -42,12 +45,15 @@ const Row2 = () => {
             "Non Operational Expenses": nonOperationalExpenses,
           };
         }
-      )
-    );
+      );
+    console.log("operationalExpensesData: ", operationalExpensesData);
+    return operationalExpensesData;
   }, [operationalData]);
 
   const productExpenseData = useMemo(() => {
-    return (
+    // Use React hook useMemo to cache results of data mapping
+    // Map data to return array with shortened price & expenses
+    const productExpenseData =
       productData &&
       productData.map(({ _id, price, expense }) => {
         return {
@@ -55,8 +61,9 @@ const Row2 = () => {
           price: price,
           expense: expense,
         };
-      })
-    );
+      });
+    console.log("productExpenseData: ", productExpenseData);
+    return productExpenseData;
   }, [productData]);
 
   return (
@@ -101,7 +108,7 @@ const Row2 = () => {
               yAxisId="left"
               type="monotone"
               dataKey="Non Operational Expenses"
-              // stroke={palette.tertiary[500]}
+              stroke={palette.tertiary[500]}
             />
             <Line
               yAxisId="right"
@@ -194,7 +201,7 @@ const Row2 = () => {
             <Scatter
               name="Product Expense Ratio"
               data={productExpenseData}
-              // fill={palette.tertiary[500]}
+              fill={palette.tertiary[500]}
             />
           </ScatterChart>
         </ResponsiveContainer>

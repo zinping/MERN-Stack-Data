@@ -20,23 +20,29 @@ import {
 
 const Row1 = () => {
   const { palette } = useTheme();
-  console.log('palette', { palette })
+  console.log("palette", { palette });
   const { data } = useGetKpisQuery();
+  console.log("data:", data);
 
+  // Use React hook useMemo to cache results of data mapping
+  // Map data to return array with shortened month & revenue
   const revenue = useMemo(() => {
-    return (
+    const revenueData =
       data &&
       data[0].monthlyData.map(({ month, revenue }) => {
         return {
           name: month.substring(0, 3),
           revenue: revenue,
         };
-      })
-    );
+      });
+    console.log("revenueData", revenueData);
+    return revenueData;
   }, [data]);
 
+  // Use React hook useMemo to cache results of data mapping
+  // Map data to return array with shortened month, revenue & expenses
   const revenueExpenses = useMemo(() => {
-    return (
+    const revExpensesData =
       data &&
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
@@ -44,12 +50,15 @@ const Row1 = () => {
           revenue: revenue,
           expenses: expenses,
         };
-      })
-    );
+      });
+    console.log("revExpensesData", revExpensesData);
+    return revExpensesData;
   }, [data]);
 
+  // Use React hook useMemo to cache results of data mapping
+  // Map data to return array with shortened month, revenue & calculated profit
   const revenueProfit = useMemo(() => {
-    return (
+    const revenueProfitData =
       data &&
       data[0].monthlyData.map(({ month, revenue, expenses }) => {
         return {
@@ -57,8 +66,9 @@ const Row1 = () => {
           revenue: revenue,
           profit: (revenue - expenses).toFixed(2),
         };
-      })
-    );
+      });
+    console.log("revenueProfitData: ", revenueProfitData);
+    return revenueProfitData;
   }, [data]);
 
   return (
@@ -186,8 +196,8 @@ const Row1 = () => {
               yAxisId="left"
               type="monotone"
               dataKey="profit"
-              stroke={palette.primary.main}
-              // stroke={palette.tertiary[500]}
+              // stroke={palette.primary.main}
+              stroke={palette.tertiary[500]}
             />
             <Line
               yAxisId="right"

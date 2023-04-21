@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PixIcon from "@mui/icons-material/Pix";
+import AnalyticsIcon from "@mui/icons-material/Analytics";
 import { Box, Typography, useTheme } from "@mui/material";
 import FlexBetween from "@/components/FlexBetween";
 
@@ -8,6 +8,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const { palette } = useTheme();
+  console.log('navbar palette: ', { palette })
 
   // initial selected page is "dashboard"
   const [selected, setSelected] = useState("dashboard");
@@ -15,7 +16,7 @@ const Navbar = (props: Props) => {
     <FlexBetween mb="0.25rem" p="0.5rem 0rem" color={palette.grey[300]}>
       {/* LEFT SIDE */}
       <FlexBetween gap="0.75rem">
-        <PixIcon sx={{ fontSize: "28px" }} />
+        <AnalyticsIcon sx={{ fontSize: "28px" }} />
         <Typography variant="h4" fontSize="16px">
           FinForecast
         </Typography>
@@ -32,19 +33,19 @@ const Navbar = (props: Props) => {
               textDecoration: "inherit",
             }}
           >
-            dashboard
+            Dashboard
           </Link>
         </Box>
         <Box sx={{ "&:hover": { color: palette.primary[100] } }}>
           <Link
-            to="/predictions"
-            onClick={() => setSelected("predictions")}
+            to="/forecasts"
+            onClick={() => setSelected("forecasts")}
             style={{
-              color: selected === "predictions" ? "inherit" : palette.grey[700],
+              color: selected === "forecasts" ? "inherit" : palette.grey[700],
               textDecoration: "inherit",
             }}
           >
-            Predictions
+            Forecasts
           </Link>
         </Box>
       </FlexBetween>

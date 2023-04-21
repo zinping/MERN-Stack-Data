@@ -1,7 +1,7 @@
 # :zap: MERN Full Stack Tracker
 
-* Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend.
-* Code from [@EdRohDev](https://www.youtube.com/@EdRohDev) with changes
+* Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend
+* Code from [@EdRohDev](https://www.youtube.com/@EdRohDev) with code changes and commenting added
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/mern-stack-data?style=plastic)
@@ -64,6 +64,7 @@
 * [@mui styled()](https://mui.com/system/styled/) components
 * [@mui Material Icons](https://mui.com/material-ui/material-icons/)
 * [Recharts v2](https://recharts.org/en-US/) bar, line, pie and scatter charts used
+* [regression v2](https://www.npmjs.com/package/regression) JavaScript module containing a collection of linear least-squares fitting methods for simple data analysis.
 
 ## :floppy_disk: Setup - Backend
 
@@ -71,11 +72,11 @@
 * Install [nodemon](https://www.npmjs.com/package/nodemon) globally if you don't already have it
 * Register with [MongoDB Atlas](www.mongodb.com), create & configure a database cluster and add connection string to `.env` file (see `.env.example` file)
 * Run `npm run dev` for a dev server
-* Navigate to `http://localhost:1337/`. The server will automatically reload if you change any of the source files
+* Backend data can be viewed using Thunder Client using urls for example: `localhost:1337/kpi/kpis`
 
 ### :floppy_disk: Setup - Frontend
 
-* Change to `/client` directory run `npm start`. Frontend will open at `http://localhost:3000/`
+* Change to `/client` directory run `npm run dev`. Frontend will open at `http://localhost:5173/`
 
 ## :computer: Code Examples
 
