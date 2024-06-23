@@ -1,7 +1,6 @@
 # :zap: MERN Full Stack Tracker
 
 * Mongo Express React Node (MERN) full-stack app, integrates React frontend with Node.js backend
-* Code from [@EdRohDev](https://www.youtube.com/@EdRohDev) with code changes and commenting added
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/mern-stack-data?style=plastic)
@@ -116,7 +115,3 @@
 ## :file_folder: License
 
 * N/A.
-
-## :envelope: Contact
-
-* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
